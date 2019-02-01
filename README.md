@@ -1,7 +1,7 @@
-# downloadFile
+# web-file
 
-## df.readFileFromWeb(path[, options], callback)
-basicly, this function is design to follow native function API of [fs.readFile](https://nodejs.org/dist/latest-v10.x/docs/api/fs.html#fs_fs_readfile_path_options_callback). 
+## wf.readFileFromWeb(path[, options], callback)
+basicly, this function is design to follow native API of [fs.readFile](https://nodejs.org/dist/latest-v10.x/docs/api/fs.html#fs_fs_readfile_path_options_callback). 
 
 - path `<string>` | `<URL>` required
   - can be a string such as https://nodejs.org
@@ -31,5 +31,6 @@ wf.readFileFromWeb(url, 'utf8', (err, data) => {
 ```
 
 ## todo
-handler 3xx redirect
-createReadStreamFromWeb
+- handler 3xx redirect
+
+- createReadStreamFromWeb
