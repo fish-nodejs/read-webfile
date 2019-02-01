@@ -1,0 +1,18 @@
+{
+  "name": "web-file",
+  "version": "0.0.1",
+  "description": "## df.readFileFromURL(path[, options], callback) basicly, this function is design to follow native function API of [fs.readFile](https://nodejs.org/dist/latest-v10.x/docs/api/fs.html#fs_fs_readfile_path_options_callback).",
+  "main": "test.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "download-file": "^0.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
