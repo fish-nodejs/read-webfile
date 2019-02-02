@@ -1,13 +1,14 @@
 const assert = require('assert')
 const readFileFromWeb = require('../lib').readFileFromWeb
+const url = require('url');
 
-var url = 'music.bitfish.xyz/'
+var noProtocolUrl = 'music.bitfish.xyz/'
 var httpUrl = 'http://music.bitfish.xyz/'
 var httpsUrl = 'https://nodejs.org/en/'
 var redirectURL = 'https://nodejs.org/'
 
 describe('readFileFromWeb', () => {
-  this.timeout(5000);
+  // this.timeout(5000);
   describe('two args (url, callback)', () => {
     describe('url is a string', () => {
       it(`should fetch http protocol url such as ${httpUrl}`, (done) => {
@@ -28,8 +29,8 @@ describe('readFileFromWeb', () => {
           done()
         })
       })
-      it(`should take ${url} as http protocol`, (done) => {
-        readFileFromWeb(url, (err, data) => {
+      it(`should take ${noProtocolUrl} as http protocol`, (done) => {
+        readFileFromWeb(noProtocolUrl, (err, data) => {
           assert.equal(err, null, 
             'should not have error')
           assert.equal(Buffer.isBuffer(data), 
@@ -43,7 +44,8 @@ describe('readFileFromWeb', () => {
     })
     describe('url is an URL object', () => {
       it(`should support url is an URL object`, (done) => {
-        readFileFromWeb(httpsUrl, (err, data) => {
+        var httpUrlObj = url.parse(httpUrl)
+        readFileFromWeb(httpUrlObj, (err, data) => {
           assert.equal(err, null, 
             'should not have error')
           assert.equal(Buffer.isBuffer(data), 
