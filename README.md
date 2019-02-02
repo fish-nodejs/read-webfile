@@ -17,12 +17,12 @@ basicly, this function is design to follow native API of [fs.readFile](https://n
   - can be a string which represent encoding such as 'utf8'
   - can be object such as `{encoding: 'utf8'}`
 
-- callback <Function>
-  - err <Error>
-  - data <string> | <Buffer>
+- callback `<Function>`
+  - err `<Error>`
+  - data `<string>` | `<Buffer>`
 
 ``` js
-const wf = require('web-file')
+const wf = require('read-webfile')
 let url = 'https://nodejs.org/en/'
 
 wf.readFileFromWeb(url, 'utf8', (err, data) => {
@@ -40,7 +40,7 @@ basicly, this function is design to follow native API of [fs.createReadStream](h
 - Returns: a Readable Stream.
 
 ``` js
-const wf = require('web-file')
+const wf = require('read-webfile')
 let url = 'https://nodejs.org/en/'
 
 const rs = wf.createReadStreamFromWeb(url)
@@ -51,3 +51,5 @@ rs1.on('end', () => {
   console.log('onend')
 })
 ```
+## notice
+this function can not handler redirect such a http 304 code.

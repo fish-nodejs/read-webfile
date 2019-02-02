@@ -1,6 +1,6 @@
 {
   "name": "read-webfile",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "let you readFile from web just like fs.readFile",
   "main": "./lib/index.js",
   "directories": {
@@ -14,6 +14,13 @@
   "scripts": {
     "test": "mocha ./test/ --timeout 5000"
   },
-  "author": "",
+  "keywords": [
+    "readFile",
+    "download file",
+    "createReadStream",
+    "web file"
+  ],
+  "homepage": "https://github.com/fish-nodejs/read-webfile",
+  "author": "salifish666",
   "license": "MIT"
 }
