@@ -1,14 +1,19 @@
 # read-webfile
+read a file from a url just like from a file path! 
 
+## Installation
+```
+npm i web-file --save
+```
 ## wf.readFileFromWeb(path[, options], callback)
 basicly, this function is design to follow native API of [fs.readFile](https://nodejs.org/dist/latest-v10.x/docs/api/fs.html#fs_fs_readfile_path_options_callback). 
 
 - path `<string>` | `<URL>` required
-  - can be a string such as https://nodejs.org
+  - can be a string such as `https://nodejs.org`
   - can be a URL object such as `new URL('https://nodejs.org')`
-  - is required, only support http or https portocol
+  - is required, and only support http or https portocol
 
-- options <Object> | <string>
+- options `<Object>` | `<string>`
   - can be a string which represent encoding such as 'utf8'
   - can be object such as `{encoding: 'utf8'}`
 
@@ -16,13 +21,9 @@ basicly, this function is design to follow native API of [fs.readFile](https://n
   - err <Error>
   - data <string> | <Buffer>
 
-```
-npm i web-file --save
-```
 ``` js
 const wf = require('web-file')
-
-var url = 'https://nodejs.org'
+let url = 'https://nodejs.org/en/'
 
 wf.readFileFromWeb(url, 'utf8', (err, data) => {
   if(err) console.error(err)
@@ -30,45 +31,23 @@ wf.readFileFromWeb(url, 'utf8', (err, data) => {
 })
 ```
 
-## todo
+## wf.createReadStream(path[, options])
+basicly, this function is design to follow native API of [fs.createReadStream](https://nodejs.org/dist/latest-v10.x/docs/api/fs.html#fs_fs_createreadstream_path_options).
 
-## bug
-1. createReadStream 传入 `https://nodejs.prg/en/` 后
-为什么onend 之后还触发了 ondata
-具体的内容就是HTML头部哪些内容
-2. isEnd 还是false ...
-3. 独立的https请求合格网址还是正常的
+- path `<string>` | `<URL>`
+- options `<string>` | `<Object>`
+  - encoding `<string>` Default: null
+- Returns: a Readable Stream.
 
+``` js
+const wf = require('web-file')
+let url = 'https://nodejs.org/en/'
+
+const rs = wf.createReadStreamFromWeb(url)
+rs.on('data', chunk => {
+  console.log(chunk.toString('utf8'))
+})
+rs1.on('end', () => {
+  console.log('onend')
+})
 ```
-node test.js
-```
-```
---- 
-false
-html 内容
-end--
-```
-
-```
-node test1.js
----
-false
-chunk...
-res1.ondata
-
-....
-
-end --
-false
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="utf-8">
-  <title>Node.js</title>
-
-  <link r
-  ...
-ERROR: stream.push() after EOF
-```
-
-bug 分析，在res.onend之后，莫名其妙的触发了一次ondata 事件，内容是这个文件的一开始的一些内容，而且isEnd 还是false

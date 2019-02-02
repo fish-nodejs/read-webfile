@@ -1,6 +1,6 @@
 {
   "name": "read-webfile",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "let you readFile from web just like fs.readFile",
   "main": "./lib/index.js",
   "directories": {
