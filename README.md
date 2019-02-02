@@ -3,7 +3,7 @@ read a file from a url just like from a file path!
 
 ## Installation
 ```
-npm i web-file --save
+npm i read-webfile --save
 ```
 ## wf.readFileFromWeb(path[, options], callback)
 basicly, this function is design to follow native API of [fs.readFile](https://nodejs.org/dist/latest-v10.x/docs/api/fs.html#fs_fs_readfile_path_options_callback). 
